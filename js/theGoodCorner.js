@@ -107,5 +107,4 @@ function passCommand(playerName, indexOfProduct) {
         alert("Oh non... C'était une fausse annonce. Votre appli cesse de fonctionner... :(");
         closeAppTGC();
     }
-
 }
