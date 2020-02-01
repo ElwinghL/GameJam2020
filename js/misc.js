@@ -6,6 +6,10 @@ Array.prototype.last = function () {
     return null;
 };
 
+Array.prototype.shuffle = function () {
+    this.sort(() => Math.random() - 0.5);
+};
+
 /* BOOLEAN */
 Boolean.prototype.and = function (...params) {
     let init = this;

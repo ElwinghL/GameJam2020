@@ -28,7 +28,7 @@ function addPlayerInput() {
         type: "text",
         rank: currentPlayerIndex,
         onkeydown: "checkPlayer(event, this)"
-    })
+    });
     inputCell.appendChild(inputText);
     row.append(firstCell, inputCell);
 
@@ -49,6 +49,7 @@ function addPlayer(name, rank) {
 function nextPlayer() {
     currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
     hasUsedAnApp = false;
+    currentStateGame();
 }
 
 function launchGame() {
@@ -64,4 +65,12 @@ function getCurrentPlayer() {
 
 function currentStateGame() {
     document.getElementById("headerMainPage").innerHTML = getCurrentPlayer();
+    clickableImage(false);
+}
+
+
+function clickableImage(disable) {
+    Array.from(document.getElementsByClassName("appIcon")).forEach(app => {
+        app.classList.toggle("nonClickable", disable);
+    });
 }
