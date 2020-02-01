@@ -34,6 +34,14 @@ Object.prototype.forEach = function (callback, thisArg = this) {
     keys.forEach(callback, thisArg);
 };
 
+String.prototype.trueEqual = function (...params) {
+    params.forEach(param => {
+        if (this !== param)
+            return false;
+    });
+    return true;
+};
+
 /* OTHER */
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

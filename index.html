@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Global Game Jam 2020</title>
+    <title>Title</title>
+    <script src="js/misc.js"></script>
     <script src="js/mainGame.js"></script>
+    <script src="js/theDarkNet.js"></script>
+    <script src="js/theGoodCorner.js"></script>
 </head>
 <body>
-<header id="header">Nom du joueur</header>
-<main>
-    <img alt="Icon The Good Corner" src="img/theGoodCorner.png">
-    <img alt="Icon The Dark Net" src="img/theDarkNet.png">
+<main id="screenStart">
+    <table id="playersList">
+        <tr>
+            <td>Joueur 1</td>
+            <td><input onkeydown="checkPlayer(event,this)" type="text"></td>
+        </tr>
+    </table>
+</main>
+<main id="screenMainPage" style="display: none;">
+    <header id="header">Nom du joueur</header>
+    <main>
+        <img alt="Icon The Good Corner" src="img/theGoodCorner.png">
+        <img alt="Icon The Dark Net" src="img/theDarkNet.png">
 
-    <button onclick="nextPlayer()">Joueur suivant</button>
+        <button onclick="nextPlayer()">Joueur suivant</button>
+    </main>
+</main>
+<main id="screenDarkNet" style="display: none;">
+
+</main>
+<main id="screenGoodCorner" style="display: none;">
+
 </main>
 </body>
 </html>
