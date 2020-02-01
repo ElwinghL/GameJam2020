@@ -32,6 +32,15 @@ Boolean.prototype.xor = function (...params) {
     });
 };
 
+/* STRINGS */
+
+/**
+ * @return {string}
+ */
+String.prototype.Capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.substring(1);
+};
+
 /* OBJECTS */
 Object.prototype.forEach = function (callback, thisArg = this) {
     const keys = Object.keys(this);

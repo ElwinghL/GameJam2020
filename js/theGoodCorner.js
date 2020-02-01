@@ -121,7 +121,7 @@ function displayOffer(offer, table) {
     console.log(offer);
     const line = createHTMLElement("TR");
     const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
-    const nameCell = createHTMLElement("TD", {colSpan: 2}, offer.sparePart); //Penser à print le spare part autrement TODO
+    const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(offer.sparePart)); //Penser à print le spare part autrement TODO
     line.append(imageCell, nameCell);
     const secondLine = createHTMLElement("TR");
     const princeCell = createHTMLElement("TD", {colSpan: 2}, offer.price + "€");
@@ -132,7 +132,7 @@ function displayOffer(offer, table) {
 function displayCommand(command, table) {
     const line = createHTMLElement("TR");
     const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
-    const nameCell = createHTMLElement("TD", {colSpan: 2}, command.sparePart); //Penser à print le spare part autrement TODO
+    const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(command.sparePart));
     line.append(imageCell, nameCell);
     const secondLine = createHTMLElement("TR");
     const addressCell = createHTMLElement("TD", {}, command.address + " ± " + command.tolerance);
@@ -149,4 +149,15 @@ function displayOffers(playerName) {
     currentOffers.forEach(offer => {
         displayOffer(offer, table);
     });
+}
+
+function sanitizeName(str) {
+    let ret = "";
+    str.split("_").forEach(elt => {
+        if (elt === "TRPTS") {
+            elt = "...";
+        }
+        ret += elt.toLowerCase().Capitalize() + " ";
+    });
+    return ret;
 }
