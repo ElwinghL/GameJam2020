@@ -7,14 +7,10 @@ function checkPlayer(event, input) {
     let rank = input.getAttribute("rank");
     let value = input.value;
     const enterKey = "Enter";
-    if (enterKey === event.code && enterKey === event.key && value.length > 0) {
+    if (enterKey === event.code && enterKey === event.key && value.length > 0 && currentPlayerIndex < 4) {
         addPlayer(value, rank);
-        if (rank === (currentPlayerIndex - 1).toString()) {
+        if (rank === (currentPlayerIndex - 1).toString() && currentPlayerIndex < 4) {
             addPlayerInput();
-        }
-    } else { //Modifier un pseudo
-        if (players.length > rank) {
-            players[rank] = value;
         }
     }
 }
@@ -43,6 +39,10 @@ function addPlayer(name, rank) {
     } else {
         players.push(name);
         ++currentPlayerIndex;
+        actualDelivery[name] = {
+            fakeOffer: 0, //Number of fake offers
+            command: []
+        }
     }
 }
 

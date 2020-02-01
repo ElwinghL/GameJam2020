@@ -7,6 +7,7 @@
           rel="stylesheet"
           type="text/css"/>
     <script src="js/misc.js"></script>
+    <script src="js/scrap.js"></script>
     <script src="js/mainGame.js"></script>
     <script src="js/theDarkNet.js"></script>
     <script src="js/theGoodCorner.js"></script>
@@ -24,7 +25,8 @@
 <main class="hidden" id="screenMainPage">
     <header id="headerMainPage">Nom du Joueur</header>
     <main id="mainMainPage">
-        <img alt="Icon The Good Corner" class="appIcon" src="img/theGoodCorner.png">
+        <img alt="Icon The Good Corner" class="appIcon" onclick="launchAppTGC(getCurrentPlayer())"
+             src="img/theGoodCorner.png">
         <img alt="Icon The Dark Net" class="appIcon" src="img/theDarkNet.png">
 
         <button onclick="nextPlayer()">Joueur suivant</button>
@@ -34,7 +36,10 @@
 
 </main>
 <main class="hidden" id="screenGoodCorner">
-
+    <header id="headerGoodCorner">The Good Corner</header>
+    <main id="mainGoodCorner">
+        <table id="tableOffers"></table>
+    </main>
 </main>
 </body>
 </html>

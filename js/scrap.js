@@ -7,7 +7,7 @@ const SPARE_PARTS = {
     CROQUETTES_BIO: {stock: 5, price: 5},
     BON_COUP_DE_TPTS_POUCE: {stock: 3, price: 20},
     TROTINETTE_ELECTRIQUE: {stock: 2, price: 30},
-    PAILLE_EN_CARTON: {stock: 10, price: 5}
+    PAILLE_EN_BAMBOU: {stock: 10, price: 5}
 };
 
 const DICES = {

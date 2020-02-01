@@ -25,7 +25,7 @@ function pickARandomDice() {
     return pickInStock(DICES);
 }
 
-function pickARandomAdresse() {
+function pickARandomAdress() {
     return pickInStock(ADDRESS);
 }
 
@@ -63,12 +63,12 @@ function getYourOffers(playerName) {
     const commands = actualDelivery[playerName];
     if (commands.command.length < 3) {
         for (let i = 0; i < 3 - commands.command.length; ++i) {
-            const address = pickARandomAdresse();
-            const key = (randomInt(1, 20) === 20 ? pickARandomDice() : pickARandomSparePart());
+            const address = pickARandomAdress();
+            const key = (randomInt(1, 20) === 1 ? pickARandomDice() : pickARandomSparePart());
             let offer = {
                 sparePart: key,
                 timeLeft: randomInt(2, 5),
-                address: address.availableNumber[randomInt(0, address.availableNumber.length - 1)] + " " + address,
+                address: ADDRESS[address].availableNumber[randomInt(0, ADDRESS[address].availableNumber.length - 1)] + " " + address,
                 tolerance: randomInt(0, 4),
                 fake: false,
                 price: randomizePrice(key)
@@ -84,8 +84,16 @@ function getYourOffers(playerName) {
     return ret;
 }
 
+function giveAFakeOffer(playerName) {
+    ++actualDelivery[playerName].fakeOffer;
+}
+
 function launchAppTGC(playerName) {
     currentOffers = getYourOffers(playerName);
+    document.getElementById("tableOffers").innerHTML = "";
+    displayOffers(playerName);
+    document.getElementById("screenGoodCorner").classList.remove("hidden");
+    document.getElementById("screenMainPage").classList.add("hidden");
 }
 
 function closeAppTGC() {
@@ -107,4 +115,38 @@ function passCommand(playerName, indexOfProduct) {
         alert("Oh non... C'était une fausse annonce. Votre appli cesse de fonctionner... :(");
         closeAppTGC();
     }
+}
+
+function displayOffer(offer, table) {
+    console.log(offer);
+    const line = createHTMLElement("TR");
+    const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
+    const nameCell = createHTMLElement("TD", {colSpan: 2}, offer.sparePart); //Penser à print le spare part autrement TODO
+    line.append(imageCell, nameCell);
+    const secondLine = createHTMLElement("TR");
+    const princeCell = createHTMLElement("TD", {colSpan: 2}, offer.price + "€");
+    secondLine.appendChild(princeCell);
+    table.append(line, secondLine);
+}
+
+function displayCommand(command, table) {
+    const line = createHTMLElement("TR");
+    const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
+    const nameCell = createHTMLElement("TD", {colSpan: 2}, command.sparePart); //Penser à print le spare part autrement TODO
+    line.append(imageCell, nameCell);
+    const secondLine = createHTMLElement("TR");
+    const addressCell = createHTMLElement("TD", {}, command.address + " ± " + command.tolerance);
+    const timeLeftCell = createHTMLElement("TD", {}, command.timeLeft);
+    secondLine.append(addressCell, timeLeftCell);
+    table.append(line, secondLine);
+}
+
+function displayOffers(playerName) {
+    const table = document.getElementById("tableOffers");
+    actualDelivery[playerName].command.forEach(command => {
+        displayCommand(command, table);
+    });
+    currentOffers.forEach(offer => {
+        displayOffer(offer, table);
+    });
 }
