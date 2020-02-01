@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+.idea/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -213,3 +214,4 @@ ModelManifest.xml
 
 # Custom project files
 js/build/
+*.iml
