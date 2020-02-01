@@ -10,21 +10,21 @@ Array.prototype.last = function () {
 Boolean.prototype.and = function (...params) {
     let init = this;
     params.forEach(param => {
-        init &= param
+        init &= param;
     });
 };
 
 Boolean.prototype.or = function (...params) {
     let init = this;
     params.forEach(param => {
-        init |= param
+        init |= param;
     });
 };
 
 Boolean.prototype.xor = function (...params) {
     let init = this;
     params.forEach(param => {
-        init ^= param
+        init ^= param;
     });
 };
 
