@@ -128,7 +128,7 @@ function removeCommand(playerName, indexOfProduct) {
 function displayOffer(offer, table, index) {
     const line = createHTMLElement("TR");
     const imageCell = createHTMLElement("TD", {rowSpan: 2});
-    const image = createHTMLElement("IMG", {src: "img/spareParts/screw.png", class: "pieceIcon"});
+    const image = createHTMLElement("IMG", {src: "img/spareParts/"+offer.sparePart+".png", class: "pieceIcon"});
     imageCell.appendChild(image);
     const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(offer.sparePart));
     const commandCell = createHTMLElement("TD", {rowSpan: 2});
