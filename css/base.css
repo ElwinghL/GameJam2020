@@ -15,6 +15,11 @@ body {
     font-size: 8vw;
 }
 
+input[type="text"] {
+    text-align: center;
+    font-size: 5vw;
+}
+
 table {
     width: 100%;
 }
@@ -31,8 +36,8 @@ table {
 }
 
 .appIcon {
-    width: 5em;
-    height: 5em;
+    width: 10vw;
+    height: 10vw;
     cursor: pointer;
 }
 
@@ -45,7 +50,7 @@ table {
 }
 
 #screenShared > header {
-    height: 2.5vh;
+    height: 5vh;
     display: flex;
     justify-content: space-between;
     color: white;
