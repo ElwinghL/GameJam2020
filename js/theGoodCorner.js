@@ -65,12 +65,14 @@ function getYourOffers(playerName) {
     if (commands.command.length < 3) {
         for (let i = 0; i < 3 - commands.command.length; ++i) {
             const address = pickARandomAdress();
-            const key = (randomInt(1, 20) === 1 ? pickARandomDice() : pickARandomSparePart());
+            const key = (randomInt(1, 40) === 29 ? pickARandomDice() : pickARandomSparePart());
+            µµ
+            ààààààààà
             let offer = {
                 sparePart: key,
                 timeLeft: randomInt(2, 5),
                 address: ADDRESS[address].availableNumber[randomInt(0, ADDRESS[address].availableNumber.length - 1)] + "_" + address,
-                tolerance: randomInt(0, 4),
+                tolerance: randomInt(0, 3),
                 fake: false,
                 price: randomizePrice(key)
             };
