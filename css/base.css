@@ -12,6 +12,7 @@ body {
     user-select: none;
     background-color: lightgray;
     overflow: hidden;
+    font-size: 8vw;
 }
 
 table {
