@@ -10,6 +10,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-color: lightgray;
 }
 
 table {
@@ -37,7 +38,7 @@ table {
 #screenStart,
 #screenShared {
     height: 90vh;
-    max-width: 40vh;
+    width: 100%;
     background-color: lightgray;
     position: relative;
 }
