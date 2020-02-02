@@ -9,6 +9,9 @@
     <link href="css/goodCorner.css"
           rel="stylesheet"
           type="text/css"/>
+    <link href="css/darkNet.css"
+          rel="stylesheet"
+          type="text/css"/>
     <script src="js/misc.js"></script>
     <script src="js/scrap.js"></script>
     <script src="js/mainGame.js"></script>
@@ -35,33 +38,29 @@
         <main id="mainMainPage">
             <img alt="Icon The Good Corner" class="appIcon" onclick="launchAppTGC(getCurrentPlayer())"
                  src="img/theGoodCorner.png">
-            <img alt="Icon The Dark Net" class="appIcon" onclick="launchAppDarkNet(getCurrentPlayer())"
+            <img alt="Icon The Dark Net" class="appIcon" onclick="launchAppTDN(getCurrentPlayer())"
                  src="img/theDarkNet.png">
-
-            <button onclick="nextPlayer()">Joueur suivant</button>
         </main>
     </main>
     <main class="hidden" id="screenDarkNet">
-        <img alt="Anonymous" src="img/anonymous.png">
-        <div class="hidden" id="screenDarkNetIndex">
-            <p>Voulez-vous utilisez les services obscures du darknet pour seulement 15 euros ?</p>
+        <header id="headerDarkNet">TAR Browser</header>
+        <div class="modal-content" id="modalContent"></div>
+        <div class="modal" id="screenDarkNetIndex">
+            <p>Voulez-vous utiliser les services obscurs du darknet pour seulement 15 € ?</p>
             <button onclick="confirmPaiement()">Payer</button>
+            <button onclick="confirmPaiement(true)">Annuler</button>
         </div>
-        <div class="hidden" id="screenDarkNetListPlayers">
-            <table id="tablePlayers"></table>
-        </div>
-        <button onclick="closeAppDarkNet()">Retour</button>
+        <table id="tablePlayers"></table>
     </main>
     <main class="hidden" id="screenGoodCorner">
         <header id="headerGoodCorner">The Good Corner</header>
         <main id="mainGoodCorner">
             <table id="tableOffers"></table>
-            <button id="btnCloseAppTGC" onclick="closeAppTGC()">Quitter l'appli</button>
         </main>
     </main>
     <footer>
-        <button id="btnReturn">⬅️</button>
-        <button id="btnNextPlayer">➡️</button>
+        <button id="btnReturn" onclick="closeCurrentApp();">⬅️</button>
+        <button id="btnNextPlayer" onclick="switchNextPlayer();">➡️</button>
     </footer>
 </main>
 </body

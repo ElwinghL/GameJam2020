@@ -1,0 +1,45 @@
+#screenDarkNet > header {
+    background-color: rebeccapurple;
+    color: white;
+    font-weight: bold;
+    height: 5vh;
+    font-size: 200%;
+}
+
+.anonymousIcon {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 100%;
+    opacity: 20%;
+}
+
+.modal {
+    text-align: center;
+    position: absolute; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vh; /* Full width */
+    height: 15vh; /* Full height */
+    background-color: black; /* Fallback color */
+    color: green;
+    font-family: "Noto Mono", monospace;
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: absolute; /* Stay in place */
+    top: 2vh;
+    left: 0;
+    z-index: 2; /* Sit on top */
+    width: 40vh; /* Full width */
+    height: 85vh; /* Full height */
+}
+
+#tablePlayers {
+    text-align: center;
+}

@@ -89,6 +89,7 @@ function giveAFakeOffer(playerName) {
 }
 
 function launchAppTGC(playerName) {
+    currentApp = APPS.THEGOODCORNER;
     currentOffers = getYourOffers(playerName);
     displayOffers(playerName);
     document.getElementById("screenGoodCorner").classList.remove("hidden");
@@ -173,10 +174,22 @@ function displayOffers(playerName) {
 function sanitizeName(str) {
     let ret = "";
     str.split("_").forEach(elt => {
-        if (elt === "TRPTS") {
+        if (elt === "TPTS") {
             elt = "...";
         }
         ret += elt.toLowerCase().Capitalize() + " ";
     });
     return ret;
+}
+
+function decrementTimeLeft(playerName) {
+    let articleToDelete = [];
+    actualDelivery[playerName].command.forEach(article => {
+        if (--article.timeLeft === 0) {
+            articleToDelete.push(article);
+        }
+    });
+    articleToDelete.forEach(article => {
+        actualDelivery[playerName].command.splice(actualDelivery[playerName].command.indexOf(article), 1);
+    })
 }

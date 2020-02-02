@@ -1,7 +1,12 @@
 let players = [];
 let currentPlayerIndex = 0;
+const APPS = {
+    MAINAPP: "mainApp",
+    THEGOODCORNER: "theGoodCorner",
+    THEDARKNET: "theDarkNet"
+};
 
-let hasUsedAnApp = false;
+let currentApp = APPS.MAINAPP;
 
 function checkPlayer(event, input) {
     let rank = input.getAttribute("rank");
@@ -42,18 +47,19 @@ function addPlayer(name, rank) {
         actualDelivery[name] = {
             fakeOffer: 0, //Number of fake offers
             command: []
-        }
-        document.getElementById("tablePlayers").appendChild(createHTMLElement("BUTTON", {
+        };
+        const line = document.getElementById("tablePlayers").insertRow();
+        line.insertCell().appendChild(createHTMLElement("BUTTON", {
             onClick: "hackPlayer('" + name + "')",
             id: "btn" + name.Capitalize()
-        }, name));
+        }, "criminal.HACK(" + name + ")"));
     }
 }
 
 function nextPlayer() {
     currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-    hasUsedAnApp = false;
     currentStateGame();
+    decrementTimeLeft(getCurrentPlayer());
 }
 
 function launchGame() {
@@ -78,4 +84,22 @@ function clickableImage(disable = false) {
     Array.from(document.getElementsByClassName("appIcon")).forEach(app => {
         app.classList.toggle("nonClickable", disable);
     });
+}
+
+function closeCurrentApp() {
+    switch (currentApp) {
+        case APPS.MAINAPP:
+            break;
+        case APPS.THEGOODCORNER:
+            closeAppTGC();
+            break;
+        case APPS.THEDARKNET:
+            closeAppTDN();
+            break;
+    }
+}
+
+function switchNextPlayer() {
+    closeCurrentApp();
+    nextPlayer();
 }
