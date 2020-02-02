@@ -11,11 +11,11 @@ body {
     -ms-user-select: none;
     user-select: none;
     background-color: lightgray;
+    overflow: hidden;
 }
 
 table {
     width: 100%;
-    font-size: 0.7em;
 }
 
 .hidden {
