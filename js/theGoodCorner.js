@@ -68,7 +68,7 @@ function getYourOffers(playerName) {
             let offer = {
                 sparePart: key,
                 timeLeft: randomInt(2, 5),
-                address: ADDRESS[address].availableNumber[randomInt(0, ADDRESS[address].availableNumber.length - 1)] + " " + address,
+                address: ADDRESS[address].availableNumber[randomInt(0, ADDRESS[address].availableNumber.length - 1)] + "_" + address,
                 tolerance: randomInt(0, 4),
                 fake: false,
                 price: randomizePrice(key)
@@ -126,7 +126,9 @@ function removeCommand(playerName, indexOfProduct) {
 
 function displayOffer(offer, table, index) {
     const line = createHTMLElement("TR");
-    const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
+    const imageCell = createHTMLElement("TD", {rowSpan: 2});
+    const image = createHTMLElement("IMG", {src: "img/spareParts/screw.png", class: "pieceIcon"});
+    imageCell.appendChild(image);
     const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(offer.sparePart));
     const commandCell = createHTMLElement("TD", {rowSpan: 2});
     commandCell.appendChild(createHTMLElement("BUTTON", {onClick: "passCommand(getCurrentPlayer()," + index + ")"}, "Commander"));
@@ -139,16 +141,18 @@ function displayOffer(offer, table, index) {
 
 function displayCommand(command, table, index) {
     const line = createHTMLElement("TR");
-    const imageCell = createHTMLElement("TD", {rowSpan: 3}, "Pour le moment c'est vide");
+    const imageCell = createHTMLElement("TD", {rowSpan: 3});
+    const image = createHTMLElement("IMG", {src: "img/spareParts/screw.png", class: "pieceIcon"});
+    imageCell.appendChild(image);
     const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(command.sparePart));
-    const commandCell = createHTMLElement("TD", {rowSpan: 2});
+    const commandCell = createHTMLElement("TD", {rowSpan: 3});
     commandCell.appendChild(createHTMLElement("BUTTON", {onClick: "removeCommand(getCurrentPlayer()," + index + ")"}, "Annuler"));
     line.append(imageCell, nameCell, commandCell);
     const secondLine = createHTMLElement("TR");
     const timeLeftCell = createHTMLElement("TD", {colSpan: 2}, command.timeLeft + " tours restants");
     secondLine.append(timeLeftCell);
     const addressLine = createHTMLElement("TR");
-    const addressCell = createHTMLElement("TD", {colSpan: 2}, command.address + " ± " + command.tolerance + " cases");
+    const addressCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(command.address) + " ± " + command.tolerance + " cases");
     addressLine.appendChild(addressCell);
     table.append(line, secondLine, addressLine);
 }

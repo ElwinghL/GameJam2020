@@ -5,8 +5,12 @@ body {
     user-select: none;
 }
 
+table {
+    width: 100%;
+}
+
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .nonClickable {
@@ -14,4 +18,34 @@ body {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
+}
+
+.appIcon {
+    width: 5em;
+    height: 5em;
+}
+
+#screenStart,
+#screenShared {
+    height: 90vh;
+    max-width: 40vh;
+    background-color: lightgray;
+    position: relative;
+}
+
+#screenShared > header {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+}
+
+#screenShared > footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
 }

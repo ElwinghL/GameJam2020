@@ -43,7 +43,10 @@ function addPlayer(name, rank) {
             fakeOffer: 0, //Number of fake offers
             command: []
         }
-        document.getElementById("tablePlayers").appendChild(createHTMLElement("BUTTON",{onClick: "hackPlayer(" + name + ")", id : "btn"+name.Capitalize()},name));
+        document.getElementById("tablePlayers").appendChild(createHTMLElement("BUTTON", {
+            onClick: "hackPlayer('" + name + "')",
+            id: "btn" + name.Capitalize()
+        }, name));
     }
 }
 
@@ -56,6 +59,7 @@ function nextPlayer() {
 function launchGame() {
     currentPlayerIndex = 0;
     document.getElementById("screenStart").classList.add("hidden");
+    document.getElementById("screenShared").classList.remove("hidden");
     document.getElementById("screenMainPage").classList.remove("hidden");
     currentStateGame();
 }

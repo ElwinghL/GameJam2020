@@ -6,6 +6,9 @@
     <link href="css/base.css"
           rel="stylesheet"
           type="text/css"/>
+    <link href="css/goodCorner.css"
+          rel="stylesheet"
+          type="text/css"/>
     <script src="js/misc.js"></script>
     <script src="js/scrap.js"></script>
     <script src="js/mainGame.js"></script>
@@ -23,34 +26,43 @@
     </table>
     <button class="hidden" id="btnStartGame" onclick="launchGame()">C'est parti !</button>
 </main>
-<main class="hidden" id="screenMainPage">
-    <header id="headerMainPage">Nom du Joueur</header>
-    <main id="mainMainPage">
-        <img alt="Icon The Good Corner" class="appIcon" onclick="launchAppTGC(getCurrentPlayer())"
-             src="img/theGoodCorner.png">
-        <img alt="Icon The Dark Net" class="appIcon" onclick="launchAppDarkNet(getCurrentPlayer())"
-             src="img/theDarkNet.png">
+<main class="hidden" id="screenShared">
+    <header>
+        <div id="headerMainPage"> Nom du Joueur</div>
+        <div>🔋</div>
+    </header>
+    <main class="hidden" id="screenMainPage">
+        <main id="mainMainPage">
+            <img alt="Icon The Good Corner" class="appIcon" onclick="launchAppTGC(getCurrentPlayer())"
+                 src="img/theGoodCorner.png">
+            <img alt="Icon The Dark Net" class="appIcon" onclick="launchAppDarkNet(getCurrentPlayer())"
+                 src="img/theDarkNet.png">
 
-        <button onclick="nextPlayer()">Joueur suivant</button>
+            <button onclick="nextPlayer()">Joueur suivant</button>
+        </main>
     </main>
-</main>
-<main id="screenDarkNet" class="hidden">
+    <main class="hidden" id="screenDarkNet">
         <img alt="Anonymous" src="img/anonymous.png">
-    <div id="screenDarkNetIndex" class="hidden">
-        <p>Voulez-vous utilisez les services obscures du darknet pour seulement 15 euros ?</p>
-        <button onclick="confirmPaiement()">Payer</button>
-    </div>
-    <div id="screenDarkNetListPlayers" class="hidden">
-        <table id="tablePlayers"></table>
-    </div>
-    <button onclick="closeAppDarkNet()">Retour</button>
-</main>
-<main class="hidden" id="screenGoodCorner">
-    <header id="headerGoodCorner">The Good Corner</header>
-    <main id="mainGoodCorner">
-        <table id="tableOffers"></table>
-        <button id="btnCloseAppTGC" onclick="closeAppTGC()">Quitter l'appli</button>
+        <div class="hidden" id="screenDarkNetIndex">
+            <p>Voulez-vous utilisez les services obscures du darknet pour seulement 15 euros ?</p>
+            <button onclick="confirmPaiement()">Payer</button>
+        </div>
+        <div class="hidden" id="screenDarkNetListPlayers">
+            <table id="tablePlayers"></table>
+        </div>
+        <button onclick="closeAppDarkNet()">Retour</button>
     </main>
+    <main class="hidden" id="screenGoodCorner">
+        <header id="headerGoodCorner">The Good Corner</header>
+        <main id="mainGoodCorner">
+            <table id="tableOffers"></table>
+            <button id="btnCloseAppTGC" onclick="closeAppTGC()">Quitter l'appli</button>
+        </main>
+    </main>
+    <footer>
+        <button id="btnReturn">⬅️</button>
+        <button id="btnNextPlayer">➡️</button>
+    </footer>
 </main>
 </body
 >

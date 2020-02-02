@@ -1,0 +1,12 @@
+#screenGoodCorner > header {
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+    height: 5vh;
+    font-size: 200%;
+}
+
+.pieceIcon {
+    width: 5vh;
+    height: 5vh;
+}
