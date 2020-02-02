@@ -43,6 +43,7 @@ function addPlayer(name, rank) {
             fakeOffer: 0, //Number of fake offers
             command: []
         }
+        document.getElementById("tablePlayers").appendChild(createHTMLElement("BUTTON",{},name));
     }
 }
 

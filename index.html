@@ -27,13 +27,22 @@
     <main id="mainMainPage">
         <img alt="Icon The Good Corner" class="appIcon" onclick="launchAppTGC(getCurrentPlayer())"
              src="img/theGoodCorner.png">
-        <img alt="Icon The Dark Net" class="appIcon" src="img/theDarkNet.png">
+        <img alt="Icon The Dark Net" class="appIcon" onclick="launchAppDarkNet(getCurrentPlayer())"
+             src="img/theDarkNet.png">
 
         <button onclick="nextPlayer()">Joueur suivant</button>
     </main>
 </main>
-<main class="hidden" id="screenDarkNet">
-
+<main id="screenDarkNet" class="hidden">
+        <img alt="Anonymous" src="img/anonymous.png">
+    <div id="screenDarkNetIndex" class="hidden">
+        <p>Voulez-vous utilisez les services obscures du darknet pour seulement 15 euros ?</p>
+        <button onclick="confirmPaiement()">Payer</button>
+    </div>
+    <div id="screenDarkNetListPlayers" class="hidden">
+        <table id="tablePlayers"></table>
+    </div>
+    <button onclick="closeAppDarkNet()">Retour</button>
 </main>
 <main class="hidden" id="screenGoodCorner">
     <header id="headerGoodCorner">The Good Corner</header>
