@@ -66,8 +66,6 @@ function getYourOffers(playerName) {
         for (let i = 0; i < 3 - commands.command.length; ++i) {
             const address = pickARandomAdress();
             const key = (randomInt(1, 40) === 29 ? pickARandomDice() : pickARandomSparePart());
-            µµ
-            ààààààààà
             let offer = {
                 sparePart: key,
                 timeLeft: randomInt(2, 5),
