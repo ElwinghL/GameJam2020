@@ -12,7 +12,7 @@ function checkPlayer(event, input) {
     let rank = input.getAttribute("rank");
     let value = input.value;
     const enterKey = "Enter";
-    if (enterKey === event.code && enterKey === event.key && value.length > 0 && currentPlayerIndex < 4) {
+    if (((enterKey === event.code && enterKey === event.key) || (event.key === "enterKey")) && value.length > 0 && currentPlayerIndex < 4) {
         addPlayer(value, rank);
         if (rank === (currentPlayerIndex - 1).toString() && currentPlayerIndex < 4) {
             addPlayerInput();

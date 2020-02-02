@@ -3,6 +3,7 @@ function launchAppTDN(playerName) {
     document.getElementById("screenDarkNet").classList.remove("hidden");
     document.getElementById("screenMainPage").classList.add("hidden");
     document.getElementById("modalContent").classList.remove("hidden");
+    document.getElementById("screenDarkNetIndex").classList.remove("hidden");
     document.getElementById("btn" + playerName.Capitalize()).classList.add("hidden");
 }
 
@@ -17,7 +18,7 @@ function hideDarkWeb() {
     document.getElementById("btn" + getCurrentPlayer().Capitalize()).classList.remove("hidden");
 }
 
-function confirmPaiement(cancel = false) {
+function confirmPayment(cancel = false) {
     if (cancel) {
         hideDarkWeb();
     } else {

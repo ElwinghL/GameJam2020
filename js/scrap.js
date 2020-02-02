@@ -17,6 +17,15 @@ const DICES = {
 };
 
 const ADDRESS = {
-    RUE_DE_LA_LIBERTE: {availableNumber: [1, 2, 3, 4, 5]},
+    RUE_PAVE_D_ANDOUILLES: {availableNumber: [1, 2, 3]},
+    AVENUE_GISCARD_DESTIN: {availableNumber: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+    PLACE_DE_BUS: {availableNumber: [1, 2, 3, 4, 5, 6, 7]},
+    RUE_AL_BERKAMU: {availableNumber: [1, 2, 3, 4, 5, 6]},
+    RUE_MATISME: {availableNumber: [1, 2, 3, 4, 5]},
+    LES_MOUETTES: {availableNumber: [1]},
+    LE_PERIPH: {availableNumber: [1, 2, 3]},
+    CUL_DE_SAC: {availableNumber: [1, 2, 3]},
+    LA_C_ROUTE: {availableNumber: [1, 2, 3]},
+
 };
 

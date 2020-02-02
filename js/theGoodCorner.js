@@ -32,7 +32,7 @@ function pickARandomAdress() {
 function pickInStock(objectOfStock) {
     let globalStocks = [];
     objectOfStock.forEach(part => {
-        if (objectOfStock.hasOwnProperty("stock")) {
+        if (objectOfStock[part].hasOwnProperty("stock")) {
             for (let i = 0; i < objectOfStock[part].stock; ++i) {
                 globalStocks.push(part);
             }
@@ -40,6 +40,7 @@ function pickInStock(objectOfStock) {
             globalStocks.push(part);
         }
     });
+    console.log(globalStocks);
     return globalStocks[randomInt(0, globalStocks.length - 1)];
 }
 
