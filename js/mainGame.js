@@ -70,7 +70,7 @@ function currentStateGame() {
 }
 
 
-function clickableImage(disable) {
+function clickableImage(disable = false) {
     Array.from(document.getElementsByClassName("appIcon")).forEach(app => {
         app.classList.toggle("nonClickable", disable);
     });

@@ -90,7 +90,6 @@ function giveAFakeOffer(playerName) {
 
 function launchAppTGC(playerName) {
     currentOffers = getYourOffers(playerName);
-    document.getElementById("tableOffers").innerHTML = "";
     displayOffers(playerName);
     document.getElementById("screenGoodCorner").classList.remove("hidden");
     document.getElementById("screenMainPage").classList.add("hidden");
@@ -104,50 +103,66 @@ function closeAppTGC() {
 }
 
 function passCommand(playerName, indexOfProduct) {
+    console.log({currentOffers, indexOfProduct});
     if (!currentOffers[indexOfProduct].fake) {
         actualDelivery[playerName].command.push({
             sparePart: currentOffers[indexOfProduct].sparePart,
-            timeLeft: currentOffers[indexOfProduct].sparePart,
+            timeLeft: currentOffers[indexOfProduct].timeLeft,
             address: currentOffers[indexOfProduct].address,
             tolerance: currentOffers[indexOfProduct].tolerance,
         });
+        currentOffers.splice(indexOfProduct, 1); //-1 parce que avant l'ajout
+        displayOffers(playerName);
     } else {
         alert("Oh non... C'était une fausse annonce. Votre appli cesse de fonctionner... :(");
         closeAppTGC();
     }
 }
 
-function displayOffer(offer, table) {
-    console.log(offer);
+function removeCommand(playerName, indexOfProduct) {
+    actualDelivery[playerName].command.splice(indexOfProduct, 1);
+    displayOffers(playerName);
+}
+
+function displayOffer(offer, table, index) {
     const line = createHTMLElement("TR");
     const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
-    const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(offer.sparePart)); //Penser à print le spare part autrement TODO
-    line.append(imageCell, nameCell);
+    const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(offer.sparePart));
+    const commandCell = createHTMLElement("TD", {rowSpan: 2});
+    commandCell.appendChild(createHTMLElement("BUTTON", {onClick: "passCommand(getCurrentPlayer()," + index + ")"}, "Commander"));
+    line.append(imageCell, nameCell, commandCell);
     const secondLine = createHTMLElement("TR");
     const princeCell = createHTMLElement("TD", {colSpan: 2}, offer.price + "€");
     secondLine.appendChild(princeCell);
     table.append(line, secondLine);
 }
 
-function displayCommand(command, table) {
+function displayCommand(command, table, index) {
     const line = createHTMLElement("TR");
-    const imageCell = createHTMLElement("TD", {rowSpan: 2}, "Pour le moment c'est vide");
+    const imageCell = createHTMLElement("TD", {rowSpan: 3}, "Pour le moment c'est vide");
     const nameCell = createHTMLElement("TD", {colSpan: 2}, sanitizeName(command.sparePart));
-    line.append(imageCell, nameCell);
+    const commandCell = createHTMLElement("TD", {rowSpan: 2});
+    commandCell.appendChild(createHTMLElement("BUTTON", {onClick: "removeCommand(getCurrentPlayer()," + index + ")"}, "Annuler"));
+    line.append(imageCell, nameCell, commandCell);
     const secondLine = createHTMLElement("TR");
-    const addressCell = createHTMLElement("TD", {}, command.address + " ± " + command.tolerance);
-    const timeLeftCell = createHTMLElement("TD", {}, command.timeLeft);
-    secondLine.append(addressCell, timeLeftCell);
-    table.append(line, secondLine);
+    const timeLeftCell = createHTMLElement("TD", {colSpan: 2}, command.timeLeft + " tours restants");
+    secondLine.append(timeLeftCell);
+    const addressLine = createHTMLElement("TR");
+    const addressCell = createHTMLElement("TD", {colSpan: 2}, command.address + " ± " + command.tolerance + " cases");
+    addressLine.appendChild(addressCell);
+    table.append(line, secondLine, addressLine);
 }
 
 function displayOffers(playerName) {
     const table = document.getElementById("tableOffers");
+    table.innerHTML = "";
+    let i = 0;
     actualDelivery[playerName].command.forEach(command => {
-        displayCommand(command, table);
+        displayCommand(command, table, i++);
     });
+    i = 0;
     currentOffers.forEach(offer => {
-        displayOffer(offer, table);
+        displayOffer(offer, table, i++);
     });
 }
 
